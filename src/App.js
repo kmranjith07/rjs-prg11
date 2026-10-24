@@ -1,26 +1,31 @@
-import { useState } from "react";
+
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [name, setName] = useState("");
 
-  // TODO 1:
-  // Create a state variable named isLoggedIn.
-  // Initial value should be false.
+  return (
+    <div>
+      {isLoggedIn ? (
+        <h1>Welcome Student {name}</h1>
+      ) : (
+        <>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
-
-  // TODO 2:
-  // Use a ternary operator to display:
-  //
-  // If logged in:
-  //     Welcome Student
-  //
-  // Otherwise:
-  //     Login button
-  //
-  // The Login button should use onClick
-  // to change the login state.
-
-
+          <button onClick={() => setIsLoggedIn(true)}>
+            Login
+          </button>
+        </>
+      )}
+    </div>
+  );
 }
 
 export default App;
